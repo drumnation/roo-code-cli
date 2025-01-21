@@ -48,3 +48,35 @@ The project is licensed under Apache 2.0.
 ## Disclaimer
 
 Roo Veterinary, Inc. provides Roo Code "AS IS" and "AS AVAILABLE," without warranties regarding the code, models, or tools provided. Users assume all risks associated with its use.
+
+## WebSocket Communication Layer (Added Tuesday, January 21, 2025 at 12:22:44 PM)
+
+### Overview
+The WebSocket server component provides real-time bidirectional communication between the VS Code extension and external clients. This enables features like live updates, remote control, and event streaming.
+
+### Technical Stack
+- **WebSocket Protocol**: Using `ws` package (v8.16.0)
+- **Logging**: Winston logger (v3.11.0)
+- **Language**: TypeScript (v5.3.3)
+
+### Architecture Decisions
+1. **Modular Design**: 
+   - Separated WebSocket functionality into its own module
+   - Independent package structure for better maintainability
+   - Clear separation of concerns between logging and server logic
+
+2. **Logging Strategy**:
+   - File-based logging for errors and combined logs
+   - Development console logging with colorization
+   - Structured JSON logging for better parsing
+   - Timestamp inclusion for debugging
+
+3. **Type Safety**:
+   - Strict TypeScript configuration
+   - Generated type definitions
+   - Source maps for debugging
+
+### Security Considerations
+- WebSocket port configurable through VS Code settings
+- Error logging separated from general logs
+- Development/Production environment detection

@@ -664,3 +664,37 @@
 
 - validateApiConfiguration
 - validateModelId
+
+## WebSocket Server Structure (Added Tuesday, January 21, 2025 at 12:22:44 PM)
+
+```
+websocket-server/
+├── src/
+│   ├── logger.ts        # Winston logger configuration
+│   └── websocketServer.ts  # (Pending) WebSocket server implementation
+├── package.json         # Project dependencies and scripts
+└── tsconfig.json       # TypeScript configuration
+```
+
+### Key Components:
+
+- **src/logger.ts**: Configures Winston logger with:
+  - File-based logging for errors and combined logs
+  - Console logging in development mode
+  - JSON formatting with timestamps
+
+- **src/websocketServer.ts**: (Pending) Will contain the WebSocket server implementation
+  - Will handle client connections
+  - Will manage message routing
+  - Will integrate with VS Code extension context
+
+- **package.json**: 
+  - Manages dependencies (ws, winston)
+  - Defines build and development scripts
+  - Configures TypeScript and type definitions
+
+- **tsconfig.json**:
+  - Configures ES2020 target
+  - Enables strict type checking
+  - Generates source maps and declaration files
+  - Organizes output in dist/ directory
