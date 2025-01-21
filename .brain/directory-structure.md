@@ -1,91 +1,52 @@
 # Directory Structure
 
-Last updated: Tuesday, January 21, 2025 at 12:37:02 PM
-
-## Root Level
-
-```
-roo-code-cli/
-├── src/                    # Main extension source code
-├── websocket-server/       # Isolated WebSocket server implementation
-│   ├── src/
-│   │   ├── logger.ts      # Custom Winston logger with sync file transport
-│   │   └── logger.test.ts # Test suite for logger functionality
-│   ├── package.json       # WebSocket server dependencies and scripts
-│   ├── tsconfig.json      # TypeScript configuration
-│   └── vitest.config.ts   # Vitest test runner configuration
-└── webview-ui/            # Frontend UI implementation
-```
-
-## WebSocket Server Structure
-
-The `websocket-server` directory is kept isolated from the main extension to:
-
-1. Maintain clear separation of concerns
-2. Allow independent versioning and testing
-3. Prevent upstream dependency conflicts
-4. Enable potential future extraction as a separate package
-
-### Key Files
-
-- `logger.ts`: Implements a robust logging system using Winston
-    - Custom SyncFileTransport for reliable file operations
-    - Environment-aware console logging
-    - Configurable log directory location
-    - Comprehensive test coverage
-
-### Development Tools
-
-- pnpm for package management
-- tsx for direct TypeScript execution
-- vitest for testing with TypeScript support
-- ESLint for code quality
+## Last Updated: Tuesday, January 21, 2025 at 03:00:37 PM
 
 ## Project Metrics
 
-**Files**: 149
-**Total Lines**: 23702
+**Files**: 161
+**Total Lines**: 24900
 
 ## File Types
 
 - .js: 39 files, 4484 lines
-- .ts: 107 files, 18793 lines
+- .ts: 119 files, 19991 lines
 - .tsx: 3 files, 425 lines
 
 ## Project Tree
 
 ```
-├── CHANGELOG.md    # Changelog for the project
-├── LICENSE    # The project's open-source license
+├── CHANGELOG.md    # Changelog of project updates
+├── LICENSE    # Project license
 ├── README.md    # Project description and usage instructions
-├── audio    # Contains audio clips for notifications and alerts
+├── audio    # Contains audio files used in the project
 │   ├── celebration.wav
 │   ├── notification.wav
 │   └── progress_loop.wav
-├── cline_docs    # Documentation for the Cline extension
+├── cline_docs    # Cline documentation
 │   └── settings.md
-├── ellipsis.yaml    # YAML configuration file for the project
-├── esbuild.js    # Build script for the extension
-├── jest.config.js    # Configuration file for the Jest testing framework
-├── out    # Output directory for compiled code
-│   └── src    # Source code for the extension
-│       ├── __mocks__    # Mock files for testing
+├── ellipsis.yaml    # Configuration for the esbuild bundler
+├── esbuild.js    # Configuration for the esbuild bundler
+├── jest.config.js    # Configuration for the Jest testing framework
+├── out    # Output directory for the compiled project
+│   └── src    # Source code for the project
+│       ├── __mocks__
 │       │   ├── McpHub.js
 │       │   └── McpHub.js.map
-│       ├── api    # API implementation for interacting with language models
+│       ├── api
 │       │   ├── index.js
 │       │   └── index.js.map
-│       ├── core    # Core logic for the extension
+│       ├── core
 │       │   ├── Cline.js
 │       │   ├── Cline.js.map
 │       │   ├── mode-validator.js
 │       │   └── mode-validator.js.map
-│       ├── exports    # Public API for the extension
+│       ├── exports
 │       │   ├── index.js
 │       │   └── index.js.map
-│       ├── extension.js    # Main entry point for the extension
+│       ├── extension.js
 │       ├── extension.js.map
-│       ├── shared    # Shared utilities between the extension and webview
+│       ├── shared
 │       │   ├── ExtensionMessage.js
 │       │   ├── ExtensionMessage.js.map
 │       │   ├── HistoryItem.js
@@ -114,10 +75,10 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │       │   ├── tool-groups.js.map
 │       │   ├── vsCodeSelectorUtils.js
 │       │   └── vsCodeSelectorUtils.js.map
-│       ├── test    # Unit tests for the extension
+│       ├── test
 │       │   ├── extension.test.js
 │       │   └── extension.test.js.map
-│       └── utils    # Utility functions for the extension
+│       └── utils
 │           ├── cost.js
 │           ├── cost.js.map
 │           ├── enhance-prompt.js
@@ -130,10 +91,11 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │           ├── path.js.map
 │           ├── sound.js
 │           └── sound.js.map
-├── package.json    # Project manifest file
-├── pnpm-workspace.yaml    # Configuration file for the pnpm package manager
-├── src    # Source code for the extension
-│   ├── __mocks__    # Mock files for testing
+├── package-lock.json    # Package manager lock file
+├── package.json    # Package manager manifest file
+├── pnpm-lock.yaml    # Package manager lock file
+├── src    # Source code for the project
+│   ├── __mocks__
 │   │   ├── McpHub.ts
 │   │   ├── default-shell.js
 │   │   ├── delay.js
@@ -145,7 +107,7 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │   ├── serialize-error.js
 │   │   ├── strip-ansi.js
 │   │   └── vscode.js
-│   ├── api    # API implementation for interacting with language models
+│   ├── api
 │   │   ├── index.ts
 │   │   ├── providers
 │   │   │   ├── anthropic.ts
@@ -169,7 +131,7 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │       ├── openai-format.ts
 │   │       ├── stream.ts
 │   │       └── vscode-lm-format.ts
-│   ├── core    # Core logic for the extension
+│   ├── core
 │   │   ├── Cline.ts
 │   │   ├── __tests__
 │   │   │   ├── Cline.test.ts
@@ -196,12 +158,12 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │       ├── ClineProvider.ts
 │   │       ├── getNonce.ts
 │   │       └── getUri.ts
-│   ├── exports    # Public API for the extension
+│   ├── exports
 │   │   ├── README.md    # Project description and usage instructions
 │   │   ├── cline.d.ts
 │   │   └── index.ts
-│   ├── extension.ts    # Main entry point for the extension
-│   ├── integrations    # Integration code with various IDE features
+│   ├── extension.ts
+│   ├── integrations
 │   │   ├── diagnostics
 │   │   │   ├── DiagnosticsMonitor.ts
 │   │   │   └── index.ts
@@ -223,7 +185,7 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │   └── workspace
 │   │       ├── WorkspaceTracker.ts
 │   │       └── get-python-env.ts
-│   ├── services    # Background services for the extension
+│   ├── services
 │   │   ├── browser
 │   │   │   ├── BrowserSession.ts
 │   │   │   └── UrlContentFetcher.ts
@@ -236,7 +198,7 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │   └── tree-sitter
 │   │       ├── index.ts
 │   │       └── languageParser.ts
-│   ├── shared    # Shared utilities between the extension and webview
+│   ├── shared
 │   │   ├── ExtensionMessage.ts
 │   │   ├── HistoryItem.ts
 │   │   ├── WebviewMessage.ts
@@ -254,10 +216,10 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │   │   ├── modes.ts
 │   │   ├── tool-groups.ts
 │   │   └── vsCodeSelectorUtils.ts
-│   ├── test    # Unit tests for the extension
+│   ├── test
 │   │   ├── extension.test.ts
-│   │   └── tsconfig.json    # Configuration file for the TypeScript compiler
-│   └── utils    # Utility functions for the extension
+│   │   └── tsconfig.json    # TypeScript configuration file
+│   └── utils
 │       ├── __tests__
 │       │   ├── cost.test.ts
 │       │   ├── enhance-prompt.test.ts
@@ -269,23 +231,41 @@ The `websocket-server` directory is kept isolated from the main extension to:
 │       ├── git.ts
 │       ├── path.ts
 │       └── sound.ts
-├── tsconfig.json    # Configuration file for the TypeScript compiler
-├── websocket-server    # Server-side code for handling websocket connections
-│   ├── package-lock.json    # Package lock file for the project
-│   ├── package.json    # Project manifest file
-│   ├── src    # Source code for the extension
-│   │   └── logger.ts
-│   └── tsconfig.json    # Configuration file for the TypeScript compiler
-└── webview-ui    # React webview for the extension
+├── tsconfig.json    # TypeScript configuration file
+├── websocket-server    # Websocket server for the project
+│   ├── package.json    # Package manager manifest file
+│   ├── pnpm-lock.yaml    # Package manager lock file
+│   ├── src    # Source code for the project
+│   │   ├── __mocks__
+│   │   │   └── vscode.ts
+│   │   ├── logger.test.ts
+│   │   ├── logger.ts
+│   │   ├── test
+│   │   │   └── setup.ts
+│   │   ├── types
+│   │   │   └── messages.ts
+│   │   ├── validators
+│   │   │   ├── messageValidator.test.ts
+│   │   │   └── messageValidator.ts
+│   │   ├── websocketServer.test.ts
+│   │   └── websocketServer.ts
+│   ├── test    # Test files and configuration
+│   │   ├── runTest.ts    # Test runner for VSCode extension tests
+│   │   └── suite
+│   │       ├── index.ts    # Test suite configuration
+│   │       └── websocketServer.test.ts    # WebSocket server tests
+│   ├── tsconfig.json    # TypeScript configuration file
+│   └── vitest.config.ts
+└── webview-ui    # Webview for the project
     ├── config-overrides.js
-    ├── package.json    # Project manifest file
+    ├── package.json    # Package manager manifest file
     ├── public
     │   ├── index.html
     │   ├── manifest.json
     │   └── robots.txt
     ├── scripts
     │   └── build-react-no-split.js
-    ├── src    # Source code for the extension
+    ├── src    # Source code for the project
     │   ├── App.tsx
     │   ├── context
     │   │   └── ExtensionStateContext.tsx
@@ -293,10 +273,10 @@ The `websocket-server` directory is kept isolated from the main extension to:
     │   ├── index.tsx
     │   ├── react-app-env.d.ts
     │   ├── reportWebVitals.ts
-    │   ├── services    # Background services for the extension
+    │   ├── services
     │   │   └── GitService.ts
     │   ├── setupTests.ts
-    │   └── utils    # Utility functions for the extension
+    │   └── utils
     │       ├── command-validation.ts
     │       ├── context-mentions.ts
     │       ├── format.ts
@@ -306,8 +286,20 @@ The `websocket-server` directory is kept isolated from the main extension to:
     │       ├── textMateToHljs.ts
     │       ├── validate.ts
     │       └── vscode.ts
-    └── tsconfig.json    # Configuration file for the TypeScript compiler
+    └── tsconfig.json    # TypeScript configuration file
 ```
+
+### 📝 Recent Changes
+
+1. Added VSCode Extension Test Configuration:
+   - `test/runTest.ts`: Main test runner for VSCode extension tests
+   - `test/suite/index.ts`: Test suite configuration using Mocha
+   - `test/suite/websocketServer.test.ts`: WebSocket server tests
+
+2. Test Framework Migration:
+   - Moved from vitest to @vscode/test-electron
+   - Added proper test isolation and cleanup
+   - Improved mock implementations
 
 ## Functions
 
@@ -404,28 +396,28 @@ The `websocket-server` directory is kept isolated from the main extension to:
 - normalizePath
 - toPosixPath
 
-### src/**mocks**/delay.js
+### src/__mocks__/delay.js
 
 - delay
 
-### src/**mocks**/globby.js
+### src/__mocks__/globby.js
 
 - globby
 
-### src/**mocks**/os-name.js
+### src/__mocks__/os-name.js
 
 - osName
 
-### src/**mocks**/p-wait-for.js
+### src/__mocks__/p-wait-for.js
 
 - pWaitFor
 
-### src/**mocks**/serialize-error.js
+### src/__mocks__/serialize-error.js
 
 - deserializeError
 - serializeError
 
-### src/**mocks**/strip-ansi.js
+### src/__mocks__/strip-ansi.js
 
 - stripAnsi
 
