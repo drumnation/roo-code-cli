@@ -1,50 +1,91 @@
 # Directory Structure
 
+Last updated: Tuesday, January 21, 2025 at 12:37:02 PM
+
+## Root Level
+
+```
+roo-code-cli/
+├── src/                    # Main extension source code
+├── websocket-server/       # Isolated WebSocket server implementation
+│   ├── src/
+│   │   ├── logger.ts      # Custom Winston logger with sync file transport
+│   │   └── logger.test.ts # Test suite for logger functionality
+│   ├── package.json       # WebSocket server dependencies and scripts
+│   ├── tsconfig.json      # TypeScript configuration
+│   └── vitest.config.ts   # Vitest test runner configuration
+└── webview-ui/            # Frontend UI implementation
+```
+
+## WebSocket Server Structure
+
+The `websocket-server` directory is kept isolated from the main extension to:
+
+1. Maintain clear separation of concerns
+2. Allow independent versioning and testing
+3. Prevent upstream dependency conflicts
+4. Enable potential future extraction as a separate package
+
+### Key Files
+
+- `logger.ts`: Implements a robust logging system using Winston
+    - Custom SyncFileTransport for reliable file operations
+    - Environment-aware console logging
+    - Configurable log directory location
+    - Comprehensive test coverage
+
+### Development Tools
+
+- pnpm for package management
+- tsx for direct TypeScript execution
+- vitest for testing with TypeScript support
+- ESLint for code quality
+
 ## Project Metrics
 
-**Files**: 148
-**Total Lines**: 23677
+**Files**: 149
+**Total Lines**: 23702
 
 ## File Types
 
 - .js: 39 files, 4484 lines
-- .ts: 106 files, 18768 lines
+- .ts: 107 files, 18793 lines
 - .tsx: 3 files, 425 lines
 
 ## Project Tree
 
 ```
 ├── CHANGELOG.md    # Changelog for the project
-├── LICENSE    # License file for the project
-├── README.md    # Main project readme file
-├── audio
+├── LICENSE    # The project's open-source license
+├── README.md    # Project description and usage instructions
+├── audio    # Contains audio clips for notifications and alerts
 │   ├── celebration.wav
 │   ├── notification.wav
 │   └── progress_loop.wav
-├── cline_docs
+├── cline_docs    # Documentation for the Cline extension
 │   └── settings.md
-├── ellipsis.yaml    # Project configuration file for Ellipsis
-├── esbuild.js    # JavaScript build configuration file
-├── jest.config.js    # JavaScript testing configuration file
-├── out
-│   └── src
-│       ├── __mocks__
+├── ellipsis.yaml    # YAML configuration file for the project
+├── esbuild.js    # Build script for the extension
+├── jest.config.js    # Configuration file for the Jest testing framework
+├── out    # Output directory for compiled code
+│   └── src    # Source code for the extension
+│       ├── __mocks__    # Mock files for testing
 │       │   ├── McpHub.js
 │       │   └── McpHub.js.map
-│       ├── api
+│       ├── api    # API implementation for interacting with language models
 │       │   ├── index.js
 │       │   └── index.js.map
-│       ├── core
+│       ├── core    # Core logic for the extension
 │       │   ├── Cline.js
 │       │   ├── Cline.js.map
 │       │   ├── mode-validator.js
 │       │   └── mode-validator.js.map
-│       ├── exports
+│       ├── exports    # Public API for the extension
 │       │   ├── index.js
 │       │   └── index.js.map
-│       ├── extension.js
+│       ├── extension.js    # Main entry point for the extension
 │       ├── extension.js.map
-│       ├── shared
+│       ├── shared    # Shared utilities between the extension and webview
 │       │   ├── ExtensionMessage.js
 │       │   ├── ExtensionMessage.js.map
 │       │   ├── HistoryItem.js
@@ -73,10 +114,10 @@
 │       │   ├── tool-groups.js.map
 │       │   ├── vsCodeSelectorUtils.js
 │       │   └── vsCodeSelectorUtils.js.map
-│       ├── test
+│       ├── test    # Unit tests for the extension
 │       │   ├── extension.test.js
 │       │   └── extension.test.js.map
-│       └── utils
+│       └── utils    # Utility functions for the extension
 │           ├── cost.js
 │           ├── cost.js.map
 │           ├── enhance-prompt.js
@@ -89,10 +130,10 @@
 │           ├── path.js.map
 │           ├── sound.js
 │           └── sound.js.map
-├── package-lock.json    # Dependency lock file for the project
-├── package.json    # Project metadata file
-├── src
-│   ├── __mocks__
+├── package.json    # Project manifest file
+├── pnpm-workspace.yaml    # Configuration file for the pnpm package manager
+├── src    # Source code for the extension
+│   ├── __mocks__    # Mock files for testing
 │   │   ├── McpHub.ts
 │   │   ├── default-shell.js
 │   │   ├── delay.js
@@ -104,7 +145,7 @@
 │   │   ├── serialize-error.js
 │   │   ├── strip-ansi.js
 │   │   └── vscode.js
-│   ├── api
+│   ├── api    # API implementation for interacting with language models
 │   │   ├── index.ts
 │   │   ├── providers
 │   │   │   ├── anthropic.ts
@@ -128,7 +169,7 @@
 │   │       ├── openai-format.ts
 │   │       ├── stream.ts
 │   │       └── vscode-lm-format.ts
-│   ├── core
+│   ├── core    # Core logic for the extension
 │   │   ├── Cline.ts
 │   │   ├── __tests__
 │   │   │   ├── Cline.test.ts
@@ -155,12 +196,12 @@
 │   │       ├── ClineProvider.ts
 │   │       ├── getNonce.ts
 │   │       └── getUri.ts
-│   ├── exports
-│   │   ├── README.md    # Main project readme file
+│   ├── exports    # Public API for the extension
+│   │   ├── README.md    # Project description and usage instructions
 │   │   ├── cline.d.ts
 │   │   └── index.ts
-│   ├── extension.ts
-│   ├── integrations
+│   ├── extension.ts    # Main entry point for the extension
+│   ├── integrations    # Integration code with various IDE features
 │   │   ├── diagnostics
 │   │   │   ├── DiagnosticsMonitor.ts
 │   │   │   └── index.ts
@@ -182,7 +223,7 @@
 │   │   └── workspace
 │   │       ├── WorkspaceTracker.ts
 │   │       └── get-python-env.ts
-│   ├── services
+│   ├── services    # Background services for the extension
 │   │   ├── browser
 │   │   │   ├── BrowserSession.ts
 │   │   │   └── UrlContentFetcher.ts
@@ -195,7 +236,7 @@
 │   │   └── tree-sitter
 │   │       ├── index.ts
 │   │       └── languageParser.ts
-│   ├── shared
+│   ├── shared    # Shared utilities between the extension and webview
 │   │   ├── ExtensionMessage.ts
 │   │   ├── HistoryItem.ts
 │   │   ├── WebviewMessage.ts
@@ -213,10 +254,10 @@
 │   │   ├── modes.ts
 │   │   ├── tool-groups.ts
 │   │   └── vsCodeSelectorUtils.ts
-│   ├── test
+│   ├── test    # Unit tests for the extension
 │   │   ├── extension.test.ts
-│   │   └── tsconfig.json    # TypeScript configuration file
-│   └── utils
+│   │   └── tsconfig.json    # Configuration file for the TypeScript compiler
+│   └── utils    # Utility functions for the extension
 │       ├── __tests__
 │       │   ├── cost.test.ts
 │       │   ├── enhance-prompt.test.ts
@@ -228,18 +269,23 @@
 │       ├── git.ts
 │       ├── path.ts
 │       └── sound.ts
-├── tsconfig.json    # TypeScript configuration file
-└── webview-ui
+├── tsconfig.json    # Configuration file for the TypeScript compiler
+├── websocket-server    # Server-side code for handling websocket connections
+│   ├── package-lock.json    # Package lock file for the project
+│   ├── package.json    # Project manifest file
+│   ├── src    # Source code for the extension
+│   │   └── logger.ts
+│   └── tsconfig.json    # Configuration file for the TypeScript compiler
+└── webview-ui    # React webview for the extension
     ├── config-overrides.js
-    ├── package-lock.json    # Dependency lock file for the project
-    ├── package.json    # Project metadata file
+    ├── package.json    # Project manifest file
     ├── public
     │   ├── index.html
     │   ├── manifest.json
     │   └── robots.txt
     ├── scripts
     │   └── build-react-no-split.js
-    ├── src
+    ├── src    # Source code for the extension
     │   ├── App.tsx
     │   ├── context
     │   │   └── ExtensionStateContext.tsx
@@ -247,10 +293,10 @@
     │   ├── index.tsx
     │   ├── react-app-env.d.ts
     │   ├── reportWebVitals.ts
-    │   ├── services
+    │   ├── services    # Background services for the extension
     │   │   └── GitService.ts
     │   ├── setupTests.ts
-    │   └── utils
+    │   └── utils    # Utility functions for the extension
     │       ├── command-validation.ts
     │       ├── context-mentions.ts
     │       ├── format.ts
@@ -260,12 +306,10 @@
     │       ├── textMateToHljs.ts
     │       ├── validate.ts
     │       └── vscode.ts
-    └── tsconfig.json    # TypeScript configuration file
+    └── tsconfig.json    # Configuration file for the TypeScript compiler
 ```
 
-
 ## Functions
-
 
 ### esbuild.js
 
@@ -360,28 +404,28 @@
 - normalizePath
 - toPosixPath
 
-### src/__mocks__/delay.js
+### src/**mocks**/delay.js
 
 - delay
 
-### src/__mocks__/globby.js
+### src/**mocks**/globby.js
 
 - globby
 
-### src/__mocks__/os-name.js
+### src/**mocks**/os-name.js
 
 - osName
 
-### src/__mocks__/p-wait-for.js
+### src/**mocks**/p-wait-for.js
 
 - pWaitFor
 
-### src/__mocks__/serialize-error.js
+### src/**mocks**/serialize-error.js
 
 - deserializeError
 - serializeError
 
-### src/__mocks__/strip-ansi.js
+### src/**mocks**/strip-ansi.js
 
 - stripAnsi
 
@@ -664,37 +708,3 @@
 
 - validateApiConfiguration
 - validateModelId
-
-## WebSocket Server Structure (Added Tuesday, January 21, 2025 at 12:22:44 PM)
-
-```
-websocket-server/
-├── src/
-│   ├── logger.ts        # Winston logger configuration
-│   └── websocketServer.ts  # (Pending) WebSocket server implementation
-├── package.json         # Project dependencies and scripts
-└── tsconfig.json       # TypeScript configuration
-```
-
-### Key Components:
-
-- **src/logger.ts**: Configures Winston logger with:
-  - File-based logging for errors and combined logs
-  - Console logging in development mode
-  - JSON formatting with timestamps
-
-- **src/websocketServer.ts**: (Pending) Will contain the WebSocket server implementation
-  - Will handle client connections
-  - Will manage message routing
-  - Will integrate with VS Code extension context
-
-- **package.json**: 
-  - Manages dependencies (ws, winston)
-  - Defines build and development scripts
-  - Configures TypeScript and type definitions
-
-- **tsconfig.json**:
-  - Configures ES2020 target
-  - Enables strict type checking
-  - Generates source maps and declaration files
-  - Organizes output in dist/ directory
