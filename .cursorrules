@@ -1,0 +1,55 @@
+# ⚠️ START EVERY MESSAGE with "Hey Dave..." So I know that you are dilligently reading the .cursorrules file
+
+# Code Quality Rules
+
+1. Test Coverage:
+   - Before attempting completion, always make sure that any code changes have test coverage
+   - Ensure all tests pass before submitting changes
+
+2. Lint Rules:
+   - Never disable any lint rules without explicit user approval
+   - If a lint rule needs to be disabled, ask the user first and explain why
+   - Prefer fixing the underlying issue over disabling the lint rule
+   - Document any approved lint rule disabling with a comment explaining the reason
+
+## Adding a New Setting
+
+To add a new setting that persists its state, follow the steps in cline_docs/settings.md
+
+```json
+{
+    "rules": {
+        "context_initialization": {
+            "description": "Starting point for each interaction",
+            "steps": [
+                "ALWAYS read `.brain/project-overview.md` and `.brain/tasks.md`",
+                "ALWAYS read `.brain/directory-structure.md`",
+                "ALWAYS read `.brain/tasks.md`"
+            ]
+        },
+        "safety_requirements": [
+            "NEVER break type safety",
+            "ALWAYS maintain proper error handling",
+            "ALWAYS document new code",
+        ],
+        "priorities": [
+            {
+                "source": ".brain/",
+                "weight": 1.0
+            }
+        ],
+        "modes": {
+            "base": {
+                "description": "For routine tasks"
+            },
+            "enhanced": {
+                "description": "For advanced tasks"
+            }
+        },
+        "project_directives": {
+            "name": "roo-code-cli",
+            "ai_first": true
+        }
+    }
+}
+```

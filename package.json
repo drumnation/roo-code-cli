@@ -1,6 +1,6 @@
 {
-	"name": "roo-cline",
-	"displayName": "Roo Code (prev. Roo Cline)",
+	"name": "roo-cline-cli",
+	"displayName": "Roo Code CLI (prev. Roo Cline)",
 	"description": "A VS Code plugin that enhances coding with AI-powered automation, multi-model support, and experimental features.",
 	"publisher": "RooVeterinaryInc",
 	"version": "3.2.1",
