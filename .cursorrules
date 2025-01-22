@@ -1,5 +1,9 @@
 # ⚠️ START EVERY MESSAGE with "Hey Dave..." So I know that you are dilligently reading the .cursorrules file
 
+## ⚠️ !REMEMBER TO KEEP THE CODE AS MODULAR AND SEPARATE FROM THE ORIGINAL FORK AS POSSIBLE
+
+## USE PNPM AS PACKAGE MANAGER
+
 # Code Quality Rules
 
 1. Test Coverage:
@@ -84,6 +88,7 @@ To add a new setting that persists its state, follow the steps in cline_docs/set
             "steps": [
                 "ALWAYS read `.brain/project-overview.md` and `.brain/tasks.md`",
                 "ALWAYS read `.brain/directory-structure.md`",
+                "ALWAYS read `.brain/standup.md`"
                 "ALWAYS read `.brain/tasks.md`"
             ]
         },

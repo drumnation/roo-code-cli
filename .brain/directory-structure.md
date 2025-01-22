@@ -1,33 +1,35 @@
 # Directory Structure
 
+## Last Updated: Tuesday, January 21, 2025 at 03:00:37 PM
+
 ## Project Metrics
 
-**Files**: 148
-**Total Lines**: 23677
+**Files**: 161
+**Total Lines**: 24900
 
 ## File Types
 
 - .js: 39 files, 4484 lines
-- .ts: 106 files, 18768 lines
+- .ts: 119 files, 19991 lines
 - .tsx: 3 files, 425 lines
 
 ## Project Tree
 
 ```
-├── CHANGELOG.md    # Changelog for the project
-├── LICENSE    # License file for the project
-├── README.md    # Main project readme file
-├── audio
+├── CHANGELOG.md    # Changelog of project updates
+├── LICENSE    # Project license
+├── README.md    # Project description and usage instructions
+├── audio    # Contains audio files used in the project
 │   ├── celebration.wav
 │   ├── notification.wav
 │   └── progress_loop.wav
-├── cline_docs
+├── cline_docs    # Cline documentation
 │   └── settings.md
-├── ellipsis.yaml    # Project configuration file for Ellipsis
-├── esbuild.js    # JavaScript build configuration file
-├── jest.config.js    # JavaScript testing configuration file
-├── out
-│   └── src
+├── ellipsis.yaml    # Configuration for the esbuild bundler
+├── esbuild.js    # Configuration for the esbuild bundler
+├── jest.config.js    # Configuration for the Jest testing framework
+├── out    # Output directory for the compiled project
+│   └── src    # Source code for the project
 │       ├── __mocks__
 │       │   ├── McpHub.js
 │       │   └── McpHub.js.map
@@ -89,9 +91,10 @@
 │           ├── path.js.map
 │           ├── sound.js
 │           └── sound.js.map
-├── package-lock.json    # Dependency lock file for the project
-├── package.json    # Project metadata file
-├── src
+├── package-lock.json    # Package manager lock file
+├── package.json    # Package manager manifest file
+├── pnpm-lock.yaml    # Package manager lock file
+├── src    # Source code for the project
 │   ├── __mocks__
 │   │   ├── McpHub.ts
 │   │   ├── default-shell.js
@@ -156,7 +159,7 @@
 │   │       ├── getNonce.ts
 │   │       └── getUri.ts
 │   ├── exports
-│   │   ├── README.md    # Main project readme file
+│   │   ├── README.md    # Project description and usage instructions
 │   │   ├── cline.d.ts
 │   │   └── index.ts
 │   ├── extension.ts
@@ -229,17 +232,40 @@
 │       ├── path.ts
 │       └── sound.ts
 ├── tsconfig.json    # TypeScript configuration file
-└── webview-ui
+├── websocket-server    # Websocket server for the project
+│   ├── package.json    # Package manager manifest file
+│   ├── pnpm-lock.yaml    # Package manager lock file
+│   ├── src    # Source code for the project
+│   │   ├── __mocks__
+│   │   │   └── vscode.ts
+│   │   ├── logger.test.ts
+│   │   ├── logger.ts
+│   │   ├── test
+│   │   │   └── setup.ts
+│   │   ├── types
+│   │   │   └── messages.ts
+│   │   ├── validators
+│   │   │   ├── messageValidator.test.ts
+│   │   │   └── messageValidator.ts
+│   │   ├── websocketServer.test.ts
+│   │   └── websocketServer.ts
+│   ├── test    # Test files and configuration
+│   │   ├── runTest.ts    # Test runner for VSCode extension tests
+│   │   └── suite
+│   │       ├── index.ts    # Test suite configuration
+│   │       └── websocketServer.test.ts    # WebSocket server tests
+│   ├── tsconfig.json    # TypeScript configuration file
+│   └── vitest.config.ts
+└── webview-ui    # Webview for the project
     ├── config-overrides.js
-    ├── package-lock.json    # Dependency lock file for the project
-    ├── package.json    # Project metadata file
+    ├── package.json    # Package manager manifest file
     ├── public
     │   ├── index.html
     │   ├── manifest.json
     │   └── robots.txt
     ├── scripts
     │   └── build-react-no-split.js
-    ├── src
+    ├── src    # Source code for the project
     │   ├── App.tsx
     │   ├── context
     │   │   └── ExtensionStateContext.tsx
@@ -263,9 +289,19 @@
     └── tsconfig.json    # TypeScript configuration file
 ```
 
+### 📝 Recent Changes
+
+1. Added VSCode Extension Test Configuration:
+   - `test/runTest.ts`: Main test runner for VSCode extension tests
+   - `test/suite/index.ts`: Test suite configuration using Mocha
+   - `test/suite/websocketServer.test.ts`: WebSocket server tests
+
+2. Test Framework Migration:
+   - Moved from vitest to @vscode/test-electron
+   - Added proper test isolation and cleanup
+   - Improved mock implementations
 
 ## Functions
-
 
 ### esbuild.js
 
@@ -664,37 +700,3 @@
 
 - validateApiConfiguration
 - validateModelId
-
-## WebSocket Server Structure (Added Tuesday, January 21, 2025 at 12:22:44 PM)
-
-```
-websocket-server/
-├── src/
-│   ├── logger.ts        # Winston logger configuration
-│   └── websocketServer.ts  # (Pending) WebSocket server implementation
-├── package.json         # Project dependencies and scripts
-└── tsconfig.json       # TypeScript configuration
-```
-
-### Key Components:
-
-- **src/logger.ts**: Configures Winston logger with:
-  - File-based logging for errors and combined logs
-  - Console logging in development mode
-  - JSON formatting with timestamps
-
-- **src/websocketServer.ts**: (Pending) Will contain the WebSocket server implementation
-  - Will handle client connections
-  - Will manage message routing
-  - Will integrate with VS Code extension context
-
-- **package.json**: 
-  - Manages dependencies (ws, winston)
-  - Defines build and development scripts
-  - Configures TypeScript and type definitions
-
-- **tsconfig.json**:
-  - Configures ES2020 target
-  - Enables strict type checking
-  - Generates source maps and declaration files
-  - Organizes output in dist/ directory
